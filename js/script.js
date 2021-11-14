@@ -4,10 +4,26 @@ requirejs.config({
 
 define(['jquery'], function ($) {
 
-    redirect();
-    btnSave();
+    createProfile();
+    saveProfile();
     clearStorage();
-    edit();
+    retrieveProfile();
+    editProfile();
+
+    function createProfile(){
+        $('#create').click(function() {
+            $('.save-profile').show();
+            $('.create-profile').hide();
+        });
+    }
+
+    function saveProfile() {
+        $('#save').on('click', function() {
+            storeLocalStorage();
+            window.location.href = 'edit.html';
+            return false;
+        });
+    }
 
     function storeLocalStorage(){
         var firstName = $('#firstname').val();
@@ -25,8 +41,8 @@ define(['jquery'], function ($) {
     function clearStorage(){
         $('#delete').click(function() {
             localStorage.clear();
-            $('.save-profile').hide();
-            $('.create-profile').show();
+            window.location.href = 'index.html';
+            return false;
         });
     }
 
@@ -36,31 +52,16 @@ define(['jquery'], function ($) {
         $('.person-role').html(profile.role);
     }
 
-    function btnSave() {
-        $('#save').on('click', function() {
-            storeLocalStorage();
-            retrieveProfile();
-            $('.save-profile').hide();
-            $('.edit-profile').show();
-        });
-    }
-
-    //Didn't manage to redirect to/from edit.html page and used jQuery to show/hide content in order to achieve the design
-
-    function redirect(){
-        $('#create').click(function() {
-            $('.save-profile').show();
-            $('.create-profile').hide();
-            $('.edit-profile').hide();
-        });
-    }
-
-    function edit(){
+    function editProfile(){
         $('#edit').click(function() {
-            $('.save-profile').show();
-            $('.create-profile').hide();
-            $('.edit-profile').hide();
+            $('.retrieve-profile').hide();
+            $('.edit-profile').show();
+            
+            var profile = JSON.parse(localStorage.getItem('profile'));
+            $('.edit-profile #firstname').val(profile.firstName);
+            $('.edit-profile #lastname').val(profile.lastName);
+            $('.edit-profile #role').val(profile.role);
         });
     }
-    
+
 });

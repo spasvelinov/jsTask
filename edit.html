@@ -6,11 +6,34 @@
 </head>
 <body>
 
-    <div class="edit-profile">
+    <div class="retrieve-profile">
         <h4 class="person-name"></h4>
         <p class="person-role"></p>
         <a href="#" id="edit">Edit profile</a>
     </div>
+
+    <div class="edit-profile" style="display: none;">
+      <form id="wrapper">
+          <div>
+              <label for="firstname">First name</label>
+              <input type="text" id="firstname">
+          </div>
+          <div>
+              <label for="lastname">Last name</label>
+              <input type="text" id="lastname">
+          </div>
+          <div>
+              <label for="role">Role</label>
+              <select id="role">
+                  <option value="">Select Role</option>
+                  <option value="manager">Manager</option>
+                  <option value="developer">Developer</option>
+                </select>
+          </div>
+          <button type="submit" id="save">Save</button>
+          <button type="submit" id="delete">Delete</button>
+      </form>
+  </div>
 
 </body>
 </html>
