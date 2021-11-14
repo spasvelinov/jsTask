@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Third JS Task</title>
+    <script data-main="js/script" src="js/require.js"></script>
+</head>
+<body>
+
+    <div class="create-profile">
+        <p>No information specified for profile</p>
+        <a href="#" id="create">Create new profile</a>
+    </div>
+
+    <div class="save-profile" style="display: none;">
+        <form id="wrapper">
+            <div>
+                <label for="firstname">First name</label>
+                <input type="text" id="firstname">
+            </div>
+            <div>
+                <label for="lastname">Last name</label>
+                <input type="text" id="lastname">
+            </div>
+            <div>
+                <label for="role">Role</label>
+                <select id="role">
+                    <option value="">Select Role</option>
+                    <option value="manager">Manager</option>
+                    <option value="developer">Developer</option>
+                  </select>
+            </div>
+            <button type="submit" id="save">Save</button>
+            <button type="submit" id="delete">Delete</button>
+        </form>
+    </div>
+
+    <div class="edit-profile" style="display: none;">
+        <h4 class="person-name"></h4>
+        <p class="person-role"></p>
+        <a href="#" id="edit">Edit profile</a>
+    </div>
+
+</body>
+</html>
